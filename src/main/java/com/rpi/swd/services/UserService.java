@@ -2,6 +2,7 @@ package com.rpi.swd.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -38,6 +39,25 @@ public class UserService {
 	}
 
 	public User findOne(String email) {
-		return userRepository.getOne(email);
+		return userRepository.findById(email).get();
+	}
+
+	public boolean isUserPresent(String email) {
+		try {
+			userRepository.findById(email).get();			
+		}
+		catch(NoSuchElementException ex) {
+			return false;
+		}
+		
+		return true;
+	}
+
+	public List<User> findAll() {
+		return userRepository.findAll();
+	}
+
+	public List<User> findByName(String name) {
+		return userRepository.findByNameLike("%" + name + "%");
 	}
 }

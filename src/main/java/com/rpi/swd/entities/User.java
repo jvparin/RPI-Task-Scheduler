@@ -68,7 +68,6 @@ public class User {
 		this.roles = roles;
 	}
 	public User(String email, String name, String password) {
-		super();
 		this.email = email;
 		this.name = name;
 		this.password = password;

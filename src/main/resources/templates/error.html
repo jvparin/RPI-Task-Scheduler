@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout:="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorate="~{fragments/main_layout}">
+<head>
+	<title>Error Page</title>
+</head>
+<body>
+
+	<div layout:fragment="content" class="container spacer">
+		<div>
+			There was an error (<span th:text="${message}"></span>) <span th:text="${status}" class="text text-danger"></span>
+		</div>
+		<div>
+			Please contact John Parin (parinj@rpi.edu) or Fatir Qureshi (quresf2@rpi.edu) if you have any questions!
+		</div>
+	</div>
+
+</body>
+</html>

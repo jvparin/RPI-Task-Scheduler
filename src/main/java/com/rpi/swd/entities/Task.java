@@ -1,5 +1,6 @@
 package com.rpi.swd.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -21,6 +22,7 @@ public class Task {
 	@NotEmpty
 	private String stopTime;
 	@NotEmpty
+	@Column(length=1000)
 	private String description;
 	@ManyToOne
 	@JoinColumn(name="USER_EMAIL")

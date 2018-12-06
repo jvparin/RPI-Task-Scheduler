@@ -16,7 +16,9 @@ layout:decorate="~{fragments/main_layout}">
 							<th>Date</th>
 							<th>Start Time</th>
 							<th>Stop Time</th>
-							<th>Description</th>					
+							<th>Description</th>
+							<th sec:authorize="hasRole('ROLE_ADMIN')" th:unless="${#httpServletRequest.getParameter('email') == null}">Edit</th>
+							<th sec:authorize="hasRole('ROLE_ADMIN')" th:unless="${#httpServletRequest.getParameter('email') == null}">Delete</th>					
 						</tr>
 					</thead>
 					<tbody>
@@ -25,11 +27,14 @@ layout:decorate="~{fragments/main_layout}">
 							<td th:text="${task.startTime}"></td>
 							<td th:text="${task.stopTime}"></td>
 							<td th:text="${task.description}"></td>
+							<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/updateTask(email=${#httpServletRequest.getParameter('email')},taskId=${task.id})}" 
+							th:unless="${#httpServletRequest.getParameter('email') == null}" class="btn btn-info">Edit Task</a></td>
+							<td sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" th:href="@{/deleteTask/} + ${task.id}" 
+							th:unless="${#httpServletRequest.getParameter('email') == null}" class="btn btn-primary">Delete Task</a></td>
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>

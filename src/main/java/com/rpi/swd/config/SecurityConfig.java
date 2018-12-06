@@ -37,9 +37,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.httpBasic().disable();
-		http.authorizeRequests().antMatchers("/register", "/", "/about", "/login", "/css/**", "/webjars/**").permitAll()
+		http.authorizeRequests().antMatchers("/register", "/", "/login", "/css/**", "/webjars/**").permitAll()
 		.antMatchers("/profile").hasAnyRole("USER, ADMIN")
-		.antMatchers("/users","/addTask").hasRole("ADMIN")
+		.antMatchers("/profile/**","/users","/addTask","/viewTasks", "/updateTask", "/deleteTask").hasRole("ADMIN")
 		.and().formLogin().loginPage("/login").permitAll()
 		.defaultSuccessUrl("/profile").and().logout().logoutSuccessUrl("/login");
 	}

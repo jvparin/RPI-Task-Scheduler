@@ -3,7 +3,7 @@
 xmlns:layout:="http://www.ultraq.net.nz/thymeleaf/layout" 
 layout:decorate="~{fragments/main_layout}">
 <head>
-	<title>Success Page</title>
+	<title>Users Page</title>
 </head>
 <body>
 
@@ -21,7 +21,8 @@ layout:decorate="~{fragments/main_layout}">
 						<tr>
 							<th>Name</th>
 							<th>Email</th>
-							<th>Add</th>					
+							<th>Add</th>
+							<th>View</th>					
 						</tr>
 					</thead>
 					<tbody>
@@ -29,6 +30,7 @@ layout:decorate="~{fragments/main_layout}">
 							<td th:text="${user.name}"></td>
 							<td th:text="${user.email}"></td>
 							<td><a th:href="@{/addTask(email=${user.email})}" class="btn btn-dark">Add Task</a></td>
+							<td><a th:href="@{/viewTasks(email=${user.email})}" class="btn btn-info">View Tasks</a></td>
 					</tbody>
 				</table>
 			</div>

@@ -44,7 +44,7 @@ public class TaskSchedulerApplicationTests {
 	
 	@Test
 	public void testUser() {
-		User user = userService.findOne("testUser@emaill.com");
+		User user = userService.findOne("testUser@email.com");
 		assertNotNull(user);
 		User admin = userService.findOne("testAdmin@email.com");
 		assertEquals(admin.getEmail(), "testAdmin@email.com");
